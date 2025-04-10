@@ -1,6 +1,11 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 
+type Post = {
+  id: string;
+  title: string;
+};
+
 async function getData() {
   const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
     next: { revalidate: 60 },
@@ -24,7 +29,7 @@ export default async function Blog() {
     <>
       <h1>Blog page</h1>
       <ul>
-        {posts.map((post: any) => (
+        {posts.map((post: Post) => (
           <li key={post.id}>
             <Link href={`/blog/${post.id}`}>{post.title}</Link>
           </li>
