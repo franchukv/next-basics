@@ -17,9 +17,8 @@ async function getData(id: string) {
   return response.json();
 }
 
-export async function generateMetadata({
-  params: { id },
-}: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params;
   const post = await getData(id);
 
   return {
@@ -27,7 +26,8 @@ export async function generateMetadata({
   };
 }
 
-export default async function Post({ params: { id } }: Props) {
+export default async function Post({ params }: Props) {
+  const { id } = await params;
   const post = await getData(id);
 
   return (
