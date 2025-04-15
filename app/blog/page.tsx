@@ -1,10 +1,6 @@
+import Post from '@/types/Post';
 import { Metadata } from 'next';
 import Link from 'next/link';
-
-type Post = {
-  id: string;
-  title: string;
-};
 
 async function getData() {
   const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
